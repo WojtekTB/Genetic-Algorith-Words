@@ -7,8 +7,10 @@
       left: 0;
     }
     #curBest {
-      width: 40vw;
-      font-size: 2vw;
+      width: 45vw;
+      font-size: 0.8vw;
+      padding: 1vw;
+      /* border-style: groove; */
     }
   </style>
   <head>
@@ -16,21 +18,113 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Genetic Algorithm - Guess Phrase</title>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css"
+    />
+    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
     <script src="./sketch.js"></script>
     <script src="./population.js"></script>
     <script src="./element.js"></script>
+    <script src="./graph.js"></script>
   </head>
   <body>
     <div id="mainCanvas"></div>
-    <div id="curBest">
-      <h2>Current generations elements:</h2>
-      <h2 style="font-weight: 10;" id="curElement">
+
+    <div id="curBest" style="float: left;">
+      <div id="curBest" style="">
+        <h2>Set parameters:</h2>
+        <p>
+          <label style="font-weight: 10; font-size: 1vw;">Max population</label>
+          <input
+            type="text"
+            id="maxPopulation"
+            value="1000"
+            style="font-weight: 10; font-size: 1vw; "
+          />
+        </p>
+        <p>
+          <label style="font-weight: 10; font-size: 1vw;"
+            >Initial max length</label
+          >
+          <input
+            type="text"
+            id="maxLen"
+            value="20"
+            style="font-weight: 10; font-size: 1vw; "
+          />
+        </p>
+        <p>
+          <label style="font-weight: 10; font-size: 1vw;">Mutation rate</label>
+          <input
+            type="text"
+            id="mutRate"
+            value="0.01"
+            style="font-weight: 10; font-size: 1vw; "
+          />
+        </p>
+        <p>
+          <label style="font-weight: 10; font-size: 1vw;">Character set</label>
+          <input
+            type="text"
+            id="charSet"
+            value="abcdefghijklmnopqrstuvwxyz. "
+            style="font-weight: 10; font-size: 1vw; width: 16vw;"
+          />
+        </p>
+        <p>
+          <label style="font-weight: 10; font-size: 1vw;"
+            >Word to look for</label
+          >
+          <input
+            type="text"
+            id="word"
+            value="to be or not to be."
+            style="font-weight: 10; font-size: 1vw; "
+          />
+        </p>
+        <button onclick="updateParams()">update parameters</button>
+        <button onclick="begin()">begin</button>
+        <button onclick="noLoop()">stop</button>
+      </div>
+
+      <hr />
+      <h2>Best element so far:</h2>
+      <h2 style="font-weight: 10; white-space: pre-line;" id="bestElem">
         element
       </h2>
+      <h2>Best element's fitness:</h2>
+      <h2 style="font-weight: 10; white-space: pre-line;" id="bestElemFitness">
+        elementFitness
+      </h2>
+      <h2>BestElement's id:</h2>
+      <h2 style="font-weight: 10; white-space: pre-line;" id="bestElemId">
+        elementId
+      </h2>
+
+      <h2>Average fitness chart:</h2>
+      <div class="ct-chart ct-perfect-fourth" style="width: 30vw;"></div>
     </div>
-    <div id="curBest">
+    <div id="curBest" style="float: left;">
+      <h2>Settings:</h2>
+      <h2 style="font-weight: 10; white-space: pre-line;" id="settings">
+        Setting
+      </h2>
+
+      <hr />
+
+      <div id="curBest" style="float: left">
+        <h2>Current generations elements:</h2>
+        <h2 style="font-weight: 10; white-space: pre-line;" id="curElement">
+          element
+        </h2>
+      </div>
+    </div>
+    <!-- <div id="curBest">
       <h2>Previous generations:</h2>
-      <h2 style="font-weight: 10;" id="pastElement">examples</h2>
-    </div>
+      <h2 style="font-weight: 10; white-space: pre-line;" id="pastElement">
+        examples
+      </h2>
+    </div> -->
   </body>
 </html>

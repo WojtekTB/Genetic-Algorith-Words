@@ -52,8 +52,16 @@ class Element {
   mutate() {
     //change a random piece of data in the element to a new random value
     let dataLength = this.data.length;
-    let charToChange = Math.floor(Math.random() * dataLength);
-    this.data[charToChange] = Math.floor(Math.random() * this.charSet.length);
+    let charToChange = Math.floor(Math.random() * dataLength + 1);
+    // let chanceToShorten = Math.random();
+    if (charToChange > dataLength) {
+      this.data.push(Math.floor(Math.random() * this.charSet.length));
+    } else {
+      this.data[charToChange] = Math.floor(Math.random() * this.charSet.length);
+    }
+    // if (chanceToShorten < 0.1) {
+    //   this.data.pop();
+    // }
   }
   crossWith(element) {
     let partner = element;
