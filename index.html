@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+    #mainCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    #curBest {
+      width: 40vw;
+      font-size: 2vw;
+    }
+  </style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Genetic Algorithm - Guess Phrase</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script src="./sketch.js"></script>
+    <script src="./population.js"></script>
+    <script src="./element.js"></script>
+  </head>
+  <body>
+    <div id="mainCanvas"></div>
+    <div id="curBest">
+      <h2>Current generations elements:</h2>
+      <h2 style="font-weight: 10;" id="curElement">
+        element
+      </h2>
+    </div>
+    <div id="curBest">
+      <h2>Previous generations:</h2>
+      <h2 style="font-weight: 10;" id="pastElement">examples</h2>
+    </div>
+  </body>
+</html>
