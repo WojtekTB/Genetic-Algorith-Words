@@ -9,7 +9,10 @@ var fitnessFunction = function(element) {
       fitness++;
     }
   }
-  return fitness;
+  if (element.toString().length > wordToGuess.length) {
+    fitness - 1;
+  }
+  return Math.pow(fitness, 2);
 };
 
 var wordToGuess = "to be or not to be.";
